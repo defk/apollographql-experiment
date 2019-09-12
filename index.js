@@ -1,4 +1,7 @@
 const {ApolloServer, gql} = require('apollo-server');
+const _api = require('./api/WeatherApi');
+
+const WeatherApi = new _api();
 
 const typeDefs = gql`
     type Weather{
@@ -7,7 +10,7 @@ const typeDefs = gql`
         wind: Float
         windDirection: String
         pressure: Int
-        showIntensity: Float
+        snowIntensity: Float
         rainIntensity: Float
     }
     type News{
@@ -64,7 +67,7 @@ const testNews = [
 
 const resolvers = {
     Query: {
-        Weather: () => testWeather,
+        Weather: () => WeatherApi.getWeather(),
         Mail: () => testMail,
         News: () => testNews,
     }

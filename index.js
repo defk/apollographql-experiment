@@ -1,7 +1,9 @@
-const {ApolloServer, gql} = require('apollo-server');
-const _api = require('./api/WeatherApi');
+const {ApolloServer, gql} = require("apollo-server");
+const _weatherAPI = require("./api/WeatherApi");
+const _newsAPI = require('./api/NewsApi');
 
-const WeatherApi = new _api();
+const WeatherApi = new _weatherAPI();
+const NewsApi = new _newsAPI();
 
 const typeDefs = gql`
     type Weather{
@@ -69,7 +71,7 @@ const resolvers = {
     Query: {
         Weather: () => WeatherApi.getWeather(),
         Mail: () => testMail,
-        News: () => testNews,
+        News: () => NewsApi.getNews(),
     }
 };
 

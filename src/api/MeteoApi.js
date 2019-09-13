@@ -1,7 +1,7 @@
 const {GraphQLDataSource} = require("apollo-datasource-graphql");
 const {gql} = require("apollo-server");
 
-class WeatherAPI extends GraphQLDataSource {
+class MeteoAPI extends GraphQLDataSource {
 
     constructor() {
         super();
@@ -40,41 +40,31 @@ class WeatherAPI extends GraphQLDataSource {
             'stations': [
                 {
                     stationId: 101520,
-                    dateTime: "2019-03-03 08:00",
+                    dateTime: "2019-03-03 09:45",
                     tAir: -0.25,
                     tRoad: 3.85,
-                }
+                },
+                {
+                    stationId: 201510,
+                    dateTime: "2019-03-03 09:45",
+                    tAir: -0.15,
+                    tRoad: 4.45,
+                },
+                {
+                    stationId: 151020,
+                    dateTime: "2019-03-03 09:45",
+                    tAir: -0.55,
+                    tRoad: 3.15,
+                },
+                {
+                    stationId: 152010,
+                    dateTime: "2019-03-03 09:45",
+                    tAir: -1.40,
+                    tRoad: 1.25,
+                },
             ]
         };
     }
-
-    async getWeather() {
-
-        try {
-
-            const response = await this.query(
-                gql`
-                    query Weather {
-                        weather{
-                            locationId
-                            tAir
-                            wind
-                            windDirection
-                            pressure
-                            snowIntensity
-                            rainIntensity
-                        }
-                    }
-                `
-            );
-
-            return response.data.weather;
-
-        } catch (e) {
-
-            console.error(e)
-        }
-    }
 }
 
-module.exports = WeatherAPI;
+module.exports = MeteoAPI;

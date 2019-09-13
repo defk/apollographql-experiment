@@ -1,0 +1,21 @@
+query MeteoListing {
+  MeteoListing{
+    stations {
+      stationId
+      dateTime
+      tAir
+      tRoad
+    }
+    places {
+      id
+      roadId
+      address
+      meters
+    }
+    roads {
+      id
+      titleShort
+      code
+    }
+  }
+}

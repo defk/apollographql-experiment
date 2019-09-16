@@ -17,7 +17,7 @@ new ApolloServer({
             throw new Error('Token is required');
         }
 
-        const uid = jwt.verify(
+        const userId = jwt.verify(
             token,
             process.env.JWT_SECRET_KEY,
             function (err, decoded) {
@@ -27,7 +27,7 @@ new ApolloServer({
                     return null;
                 }
 
-                if (undefined === decoded || undefined === decoded.uid) {
+                if (undefined === decoded || undefined === decoded.userId) {
 
                     return null;
                 }
@@ -36,12 +36,12 @@ new ApolloServer({
             }
         );
 
-        if (null === uid) {
+        if (null === userId) {
 
             throw new AuthenticationError("Unauthorized");
         }
 
-        console.log(uid);
+        console.log(userId);
     }
 }).listen(
     serverOpts,

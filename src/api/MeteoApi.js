@@ -8,7 +8,7 @@ class MeteoAPI extends GraphQLDataSource {
         this.baseURL = "http://127.2.1.1/graphql";
     }
 
-    async getMeteoListing() {
+    async getMeteoListing(userId) {
 
         return {
             'places': [

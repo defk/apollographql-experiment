@@ -32,7 +32,7 @@ new ApolloServer({
                     return null;
                 }
 
-                return decoded.uid;
+                return decoded.userId;
             }
         );
 
@@ -41,7 +41,7 @@ new ApolloServer({
             throw new AuthenticationError("Unauthorized");
         }
 
-        console.log(userId);
+        return { userId };
     }
 }).listen(
     serverOpts,

@@ -3,7 +3,7 @@ const MeteoApi = new _weatherAPI();
 
 const resolvers = {
     Query: {
-        MeteoListing: () => MeteoApi.getMeteoListing(),
+        MeteoListing: (parent, args, context) => MeteoApi.getMeteoListing(context.userId),
     }
 };
 
